@@ -54,35 +54,33 @@ export function PaddleDuel() {
 
   const soundOnRef = useRef(false);
   // The engine is created once and never re-created; React holds only what is shown as text.
-  const engine = useMemo(
-    () =>
-      createEngine({
-        onScores: (left, right) => setScores({ left, right }),
-        onPhase: (next, nextWinner, nextServing) => {
-          setPhase(next);
-          setWinner(nextWinner);
-          setServing(nextServing);
-          if (next === "over") setPaused(false);
-        },
-        onBallSpeed: (pxPerSecond) => setBallSpeed(pxPerSecond),
-        onHit: () => {
-          if (soundOnRef.current) playHitSound();
-        },
-        onPoint: (gameOver) => {
-          if (!soundOnRef.current) return;
-          if (gameOver) playWinSound();
-          else playPointSound();
-        },
-        onCountdownTick: (n) => {
-          if (soundOnRef.current) playCountdownBeep(n);
-        },
-      }),
-    [],
-  );
+  const engine = useMemo(() => createEngine(), []);
 
-  // Saved settings are read after mount, never during render, so hydration matches. The mirrors
-  // into React go through a microtask: state setters do not run inside the effect body itself.
+  // Engine event handlers, and the saved settings read after mount (never during render, so
+  // hydration matches). The mirrors into React go through a microtask so that no state setter
+  // runs inside the effect body itself.
   useEffect(() => {
+    engine.setHandlers({
+      onScores: (left, right) => setScores({ left, right }),
+      onPhase: (next, nextWinner, nextServing) => {
+        setPhase(next);
+        setWinner(nextWinner);
+        setServing(nextServing);
+        if (next === "over") setPaused(false);
+      },
+      onBallSpeed: (pxPerSecond) => setBallSpeed(pxPerSecond),
+      onHit: () => {
+        if (soundOnRef.current) playHitSound();
+      },
+      onPoint: (gameOver) => {
+        if (!soundOnRef.current) return;
+        if (gameOver) playWinSound();
+        else playPointSound();
+      },
+      onCountdownTick: (n) => {
+        if (soundOnRef.current) playCountdownBeep(n);
+      },
+    });
     const speed = readStoredSpeed();
     const sound = readStoredSound();
     soundOnRef.current = sound;
