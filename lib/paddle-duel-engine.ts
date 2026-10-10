@@ -122,6 +122,9 @@ export function createEngine(): Engine {
 
   let lastReportedSpeed = -1;
 
+  // The warm-up ball bounces between the walls from the first frame, at the serve speed.
+  state.ball.vy = state.width / state.cross;
+
   const metrics = (): Metrics => {
     const h = state.height;
     const w = state.width;
