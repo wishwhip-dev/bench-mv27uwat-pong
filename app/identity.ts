@@ -6,7 +6,7 @@
  */
 export const identity = {
   name: "Paddle duel",
-  description: "A two-player paddle game like Pong.",
+  description: "A two-player paddle game like Pong. First to 7 points wins.",
   accent: "#7c3aed",
   initial: "P",
 } as const;
