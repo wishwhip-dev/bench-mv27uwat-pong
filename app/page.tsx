@@ -1,24 +1,17 @@
-import { StarterScene } from "./starter-scene";
+import { PaddleDuel } from "./paddle-duel";
 
 /**
- * The placeholder. Replace it, and delete `starter-scene.tsx` with it.
- *
- * It is a server component on purpose: the heading and the text below render on the server, so the
- * route has readable content before any script runs, and the drawing is a client island inside it.
+ * A two-player paddle game: the court is a canvas, everything that must be read as text — the
+ * score, the status, the controls and their values — is DOM beside it.
  */
 export default function Home() {
   return (
-    <main className="mx-auto flex min-h-dvh max-w-4xl flex-col justify-center gap-6 px-6 py-12">
-      <div className="space-y-2">
-        <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Ready to draw</p>
-        <h1 className="text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
-          Describe this canvas app in the task goal.
-        </h1>
-        <p className="text-lg text-muted-foreground">
-          The coding agent will replace this starter scene with the requested visual, toy or game.
-        </p>
-      </div>
-      <StarterScene />
+    <main className="mx-auto flex min-h-dvh max-w-3xl flex-col justify-center gap-5 px-4 py-8 sm:px-6">
+      <header className="space-y-1 text-center">
+        <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">First to 7 points</p>
+        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">Paddle duel</h1>
+      </header>
+      <PaddleDuel />
     </main>
   );
 }
