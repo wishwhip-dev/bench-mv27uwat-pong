@@ -1,0 +1,135 @@
+{
+  "manifestVersion": 1,
+  "template": "canvas-nextjs",
+  "capabilities": {
+    "storage": {
+      "kind": "none",
+      "shared": false,
+      "crossDevice": false,
+      "exportImport": false,
+      "smallValues": "localStorage"
+    },
+    "routing": {
+      "kind": "home"
+    },
+    "auth": {
+      "kind": "none"
+    },
+    "backend": {
+      "kind": "server-runtime"
+    },
+    "instructions": {
+      "briefing": "AGENTS.md",
+      "docs": [
+        "docs/components.md",
+        "docs/graphics.md",
+        "docs/audio.md",
+        "docs/files.md",
+        "docs/camera.md",
+        "docs/share.md",
+        "docs/ai.md",
+        "docs/visits.md"
+      ]
+    },
+    "rendering": {
+      "kind": "canvas",
+      "contexts": [
+        "2d",
+        "webgl2",
+        "webgl"
+      ],
+      "webgpu": "unavailable: absent in verification and unreliable on visitors' machines",
+      "docs": "docs/graphics.md"
+    },
+    "input": {
+      "camera": true,
+      "files": true,
+      "microphone": true
+    },
+    "share": true,
+    "ai": true
+  },
+  "stamp": {
+    "recipe": "canvas-nextjs",
+    "modules": [
+      "canvas-shell",
+      "base",
+      "ui-kit",
+      "ui-kit-extra",
+      "graphics",
+      "audio",
+      "files",
+      "camera",
+      "share",
+      "ai",
+      "visits"
+    ],
+    "supervisorRevision": "templates-f7fc9cfb48c51676",
+    "files": {
+      ".gitignore": "73ec7442d8e321919c3d0eb5a2fc8f11fbcbf1096ec76b3f9f5e54f6a19a198a",
+      "AGENTS.md": "28b870c4e253dfa3751973167e5046a12ebae390c5d50102480dcea242e413c6",
+      "app/api/ai/route.ts": "77fb08540ea6944e52a51e5ae02b0a965f454c3b50c8f5bc1d07306f2e783d50",
+      "app/apple-icon.tsx": "288b2750dbcb27e92c03478df3de7ae13a95af454229846df69634e69cd84a7c",
+      "app/globals.css": "6d3cdf34b93a2489d8be3f593e862ed0fe7afcb7d3038ce80ebe211cdbe4f7e6",
+      "app/icon.tsx": "d407a1351b0121694469fa25a51b850895e10246d717da01f11617f96b19ed41",
+      "app/identity.ts": "fa2ddffc6c45fdbd9e65225620c75de0cfa3b463359878325dc8afe20678db22",
+      "app/layout.tsx": "37ceace6a233c55e54004f11d76c686e68ea1efe46221fb395ebcf511c657e1b",
+      "app/manifest.ts": "2c3e4276f3d9c6b87d2bc4829c1d9998ff53ed19c56725087544895c07c91a19",
+      "app/opengraph-image.tsx": "cc4573304e27b2f5832a91aedcc893026a42cfdd97201e74eb338d8b89e50e9a",
+      "app/page.tsx": "d1b7ea068eacdd808728b8568d5f1bca6b0fe38a2e11d0c137d05935757a4680",
+      "app/starter-scene.tsx": "4b53667bf53c94b36b43164c0325044475eae677025f69e2313afa3b2345a15d",
+      "components.json": "10bccedf3ec33c1b5194a369b8acc993ac17acf53881482fa2327889d9dbb51b",
+      "components/camera-view.tsx": "c12999419676ef906745aa4c29c02acd13ddb0b324c89dafe33ae81810308585",
+      "components/canvas-stage.tsx": "8fde46185c537a6223d46e96dc060b47b2ee4a5bcc4a031c2992ca024cae7546",
+      "components/file-drop.tsx": "717709817c538f869e9d154745f3496c92c1a69ce21d218df1e222cdad893309",
+      "components/share-button.tsx": "0fdc3146addfb2c2cf0ed5ca600b55fb1d75fb7605a28a728b9e7199cad3ae16",
+      "components/ui/accordion.tsx": "00dd6eef660f08ce85154106fa0fa4d943ed699c5ca7b06bb08732978bcebb49",
+      "components/ui/alert.tsx": "5950ac01377e7eedc94b00eb3fee678745e4cc1a72b5343867f0733d07db6660",
+      "components/ui/badge.tsx": "dab689d836ad3292b41e7f4986b4e68e5d45c6903e4aeaae8972a82d4aebec29",
+      "components/ui/button.tsx": "c2b999a96781e6c932632bd089095368e973bf5602e1b1a62156b7d2b43f1e84",
+      "components/ui/card.tsx": "525c4bb2c051987be64df0e92e1d90174912b219bf541e24ffbc4a3406de49e8",
+      "components/ui/checkbox.tsx": "c9e19d480a43172f9504ac9b22f4a9c149de1d916162f24c62395533b7be19f6",
+      "components/ui/collapsible.tsx": "f4cdd104de29928bfcd40b865c7d08eed9157a537fbb8b5e6d0921f02b63cc04",
+      "components/ui/dialog.tsx": "8285c62a3b8d97e8c6f4fcc54c0516871afe7d72c72b5f432533cc6dd591b12e",
+      "components/ui/input.tsx": "6299a6a387dc55e528aec4342deaea0b83f1ea3a365c135a31a18ee55334f441",
+      "components/ui/label.tsx": "2eac8fbb04002c42b0fbc4062d20d131e421796eaf65c37d2049e29e42ecbc5a",
+      "components/ui/popover.tsx": "69f74cdd76588a1249522ff8009e044eee6080ad8cf26cb08d7a5fc3281f0255",
+      "components/ui/progress.tsx": "6b3b4b69a1cb361076174892e9a96e1a09020307616965ef89f2f7e2495b57a9",
+      "components/ui/radio-group.tsx": "30c8d8ea431d9480180d47689b5863fc89e649329aa102766db30a2af5fe4ae8",
+      "components/ui/scroll-area.tsx": "edbaecbc4f5cb6e16ecb39d3678d81b26e1a968dfc273dbb77821de3c8626377",
+      "components/ui/select.tsx": "3d93ae07a8f3fe121ba60f4439e26bd7859f247eb8bfcafcf4b4a8a069888eec",
+      "components/ui/separator.tsx": "995c54f1c5c688f712a675fe35d55bcada2b31dba561dcc71553a1ad601e59ec",
+      "components/ui/skeleton.tsx": "87608e7cc815ad3d88e0b9de6c402bb37b58ea1b38636cf69709da1baff6e334",
+      "components/ui/slider.tsx": "16dad0a2c58fba2a38740ab9b15936f1f9a07d0e3aafccdce875b6bac31d79be",
+      "components/ui/switch.tsx": "ab2d009e0fa7366f47ae1a6e0ca35d0aac55c6264c5f61718e12366c196163b4",
+      "components/ui/table.tsx": "a4a6972c2d47d465d7f02c1dc4a6cbfeda7a97e46479c1b0cebdaf26bf9b497a",
+      "components/ui/tabs.tsx": "2d8e74c6f76bc24c60d247e564fa881361edd97561edfcca506149f64d32f7d7",
+      "components/ui/textarea.tsx": "ec7c92aaed80f6923a7caa4bfe4eead395b50a7001504fd7fbb0b9381804dae9",
+      "components/ui/toggle-group.tsx": "dba95ead40d163af6959198ded9853a2cc9282b2cb534980f99937a65edf4e2d",
+      "components/ui/toggle.tsx": "fb6061098e0368d9119905d6ed3c5ed2704b75078c4ad2c71b16b29f98a42ace",
+      "components/ui/tooltip.tsx": "ce6afa34fb9dae51053a863b4c3f7c6e55f3da23b00149f31a8e4402bc963be0",
+      "components/visit-beacon.tsx": "97937b7fff1cad387b5ff2a0066195f090b90063638715fc86f4eb0c656a3156",
+      "docs/ai.md": "3dd10480f7ae76e7fdcfc1e33b0b98a9cc31a966776f83aee36b612300e955a9",
+      "docs/audio.md": "0a21ee2e0cb7d6e25b98ad16464aedb7ddf3a7a6acb94a27d3ba146057478a9a",
+      "docs/camera.md": "af504fd634c7d4f091562364e6cbe4afc522cf9afbb368a1759fceceafdb5c66",
+      "docs/components.md": "38e4bb460f5d1ec21206f1b17f4b48631d6314b6700c4c51e495862d80e5f1a4",
+      "docs/files.md": "10441627520a2bcd1767bf6802a637a0ed8cf9e18b5146f2fc311f0a72a094cc",
+      "docs/graphics.md": "efe5f1befc3c51aa8d837ef70e6d74d4f50b89d0ddf3a146876357dd05beda1f",
+      "docs/share.md": "5245ea01a04f3e60165f5984afe72496c1f47972bfb5107f74f7df0c1bb35c87",
+      "docs/visits.md": "4ba8f1820019b88e50ed9a48db919fd0c81ebb3a63de6c5ce87cfd93044cb6f3",
+      "eslint.config.mjs": "7bad4b29e9d3961b516048dba7c36b3d89e4d1d4218903070673f075bdc59595",
+      "lib/ai.ts": "5401ea0ac096b4c390d98f5c5814dab1c340de8e8c3cb933e01637958be0f8a7",
+      "lib/audio.ts": "8eab63b5266bca9875b5398e85c786cd98b62c9cde766ff7de7c804455ed5eb9",
+      "lib/camera.ts": "829e6d548346e2c7e707b50207ec458c4d8666b4a781c34de1c1f700a5c1b222",
+      "lib/files.ts": "dedcbe56050ef5fff59785cb5f04d45ecbaedbe284b118a9f0bbb9aec240c5fd",
+      "lib/graphics.ts": "a1ea1c730eebdac3cbeeb57c8890e2211fbcac73832621f19fe3d24646d2b4fa",
+      "lib/share.ts": "3dfbb03b3790d1438f6d8f7e1792a6210b9da8476abed33c27049e7f9dc674d4",
+      "lib/utils.ts": "d1f1e0d62cb8d8d1e04c26e14de842d8a151f75812d81b046c65b5d1fe8e4b27",
+      "next-env.d.ts": "100c63b8ff3896173cbe3c2ec87a358a03599450842d816e0d70d8ee3de1b4ea",
+      "next.config.ts": "ab4c61f6ee100ae43610a18512f1ebcec842bb2405431e1009266173f21cf772",
+      "postcss.config.mjs": "dfac7ac2d86d326a0e5adb024e7943c181393ed17a5fcb8f0315b24c7da6ddde",
+      "tsconfig.json": "b7e1292326a04f58f41681c2109e535fcde5ee1573b07a8f123071c9e87457ba",
+      "types/webgpu.d.ts": "c88475e45de52a5d13a3ccd33df4f1af9d871633084711485f2269284c39cd00"
+    }
+  }
+}
