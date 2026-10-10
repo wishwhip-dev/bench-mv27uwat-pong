@@ -69,8 +69,7 @@ export function PaddleDuel() {
         if (!soundOnRef.current) return;
         if (engineRef.current?.state.phase === "over") playWinSound();
         else playPointSound();
-      },
-      onCountdownTick: (n) => {
+      },      onCountdownTick: (n) => {
         if (soundOnRef.current) playCountdownBeep(n);
       },
     });
