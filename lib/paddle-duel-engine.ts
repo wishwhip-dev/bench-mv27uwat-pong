@@ -381,6 +381,9 @@ export function createEngine(): Engine {
   return {
     state,
     keys: state.keys,
+    setHandlers: (next) => {
+      handlers = next;
+    },
     metrics,
     servePx,
     ballSpeedPx,
