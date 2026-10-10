@@ -112,7 +112,7 @@ export function drawState(ctx: CanvasRenderingContext2D, w: number, h: number, s
   const sideName = (side: Side) => (side === "left" ? "Left" : "Right");
 
   if (s.phase === "countdown") {
-    const shown = Math.max(1, Math.ceil(s.countdown / 0.8));
+    const shown = Math.max(1, Math.ceil(s.countdown / COUNTDOWN_STEP));
     text(ctx, String(shown), w / 2, h * 0.42, { size: Math.round(h * 0.34), color: c.text, weight: 700 });
     text(ctx, `${sideName(s.serving)} serves`, w / 2, h * 0.66, { size: Math.round(h * 0.06), color: c.dim });
   }
