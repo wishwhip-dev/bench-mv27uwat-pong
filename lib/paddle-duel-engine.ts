@@ -263,7 +263,7 @@ export function createEngine(handlers: EngineHandlers): Engine {
     if (state.scores[scorer] >= WINNING_SCORE) {
       centreBall();
       setPhase("over", scorer);
-      handlers.onPoint();
+      handlers.onPoint(true);
       return;
     }
     // The loser receives the next serve.
@@ -272,7 +272,7 @@ export function createEngine(handlers: EngineHandlers): Engine {
     state.countdown = COUNTDOWN_STEP * 3;
     state.beeped = 0;
     setPhase("countdown");
-    handlers.onPoint();
+    handlers.onPoint(false);
   };
 
   /** Advance the rally one substep: paddles first, then the ball with swept paddle checks. */
