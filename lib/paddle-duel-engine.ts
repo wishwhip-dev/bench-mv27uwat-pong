@@ -20,7 +20,9 @@ export const SPEED_SETTINGS = {
 
 export type SpeedKey = keyof typeof SPEED_SETTINGS;
 
-const COUNTDOWN_STEP = 0.8; // seconds each of "3", "2", "1" is on screen
+const COUNTDOWN_STEP_EXPORT = 0.8;
+export const COUNTDOWN_STEP = COUNTDOWN_STEP_EXPORT;
+const SPEED_INCREMENT = 1.07; // ball speed multiplier per paddle hit
 const SPEED_INCREMENT = 1.07; // ball speed multiplier per paddle hit
 const SPEED_CAP = 2.3; // cap, as a multiple of the serve speed
 const MAX_BOUNCE_ANGLE = (60 * Math.PI) / 180; // steepest angle off a paddle edge

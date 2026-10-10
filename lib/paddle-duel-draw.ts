@@ -3,7 +3,7 @@
  * Pure drawing — all simulation lives in `lib/paddle-duel-engine.ts`.
  */
 import type { EngineState, Metrics, Side } from "@/lib/paddle-duel-engine";
-import { WINNING_SCORE } from "@/lib/paddle-duel-engine";
+import { COUNTDOWN_STEP, WINNING_SCORE } from "@/lib/paddle-duel-engine";
 
 export type CourtColors = {
   court: string;
