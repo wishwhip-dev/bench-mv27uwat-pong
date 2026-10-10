@@ -27,11 +27,13 @@ const MAX_BOUNCE_ANGLE = (60 * Math.PI) / 180; // steepest angle off a paddle ed
 
 export type EngineHandlers = {
   onScores: (left: number, right: number) => void;
-  onPhase: (phase: Phase, winner: Side | null) => void;
+  /** Every phase change, with the side the ball is served toward. */
+  onPhase: (phase: Phase, winner: Side | null, serving: Side) => void;
   /** Current ball speed in px/s, whenever it changes by a visible amount. */
   onBallSpeed: (pxPerSecond: number) => void;
   onHit: () => void;
-  onPoint: () => void;
+  /** A point was scored; `gameOver` is true when it ended the match. */
+  onPoint: (gameOver: boolean) => void;
   /** Each 3/2/1 shown during the serve countdown. */
   onCountdownTick: (n: number) => void;
 };
@@ -162,7 +164,7 @@ export function createEngine(handlers: EngineHandlers): Engine {
   const setPhase = (phase: Phase, winner: Side | null = null) => {
     state.phase = phase;
     state.winner = winner;
-    handlers.onPhase(phase, winner);
+    handlers.onPhase(phase, winner, state.serving);
   };
 
   const startGame = () => {
