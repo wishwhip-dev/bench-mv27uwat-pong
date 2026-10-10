@@ -76,14 +76,18 @@ export function PaddleDuel() {
   }
   const engine = engineRef.current;
 
-  // Saved settings are read after mount, never during render, so hydration matches.
+  // Saved settings are read after mount, never during render, so hydration matches. The mirrors
+  // into React go through a microtask: state setters do not run inside the effect body itself.
   useEffect(() => {
     const speed = readStoredSpeed();
-    soundOnRef.current = readStoredSound();
-    setSpeedKey(speed);
-    setSoundOn(soundOnRef.current);
+    const sound = readStoredSound();
+    soundOnRef.current = sound;
     engine.setServeSpeed(SPEED_SETTINGS[speed]);
-    setMuted(!soundOnRef.current);
+    setMuted(!sound);
+    queueMicrotask(() => {
+      setSpeedKey(speed);
+      setSoundOn(sound);
+    });
   }, [engine]);
 
   // Keyboard: held keys drive the paddles, Space pauses and resumes and never scrolls the page.
@@ -104,11 +108,9 @@ export function PaddleDuel() {
         event.preventDefault();
         const phaseNow = engine.state.phase;
         if (phaseNow === "countdown" || phaseNow === "rally") {
-          setPaused((previous) => {
-            const next = !previous;
-            engine.setPaused(next);
-            return next;
-          });
+          const next = !engine.state.paused;
+          engine.setPaused(next);
+          setPaused(next);
         }
         return;
       }
