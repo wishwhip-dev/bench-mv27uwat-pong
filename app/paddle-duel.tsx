@@ -308,7 +308,7 @@ export function PaddleDuel() {
         <span>
           Ball speed now: <span className="font-medium tabular-nums text-foreground">{ballSpeed === null ? "—" : `${ballSpeed} px/s`}</span>
         </span>
-        {audioStatus === "suspended" && <span>Sound is paused — press Sound off to turn it back on.</span>}
+        {audioStatus === "suspended" && <span>Sound is paused by the browser — press the sound button to resume it.</span>}
         {audioStatus === "unsupported" && <span>Sound is not available in this browser.</span>}
       </div>
 
