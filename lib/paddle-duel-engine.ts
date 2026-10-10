@@ -73,6 +73,8 @@ export type Engine = {
   state: EngineState;
   /** Held keys: "w", "s", "up", "down" — mutated by the keyboard listeners. */
   keys: Set<string>;
+  /** Attach (or replace) the event handlers. Called from an effect, never during render. */
+  setHandlers: (handlers: EngineHandlers) => void;
   metrics: () => Metrics;
   servePx: () => number;
   ballSpeedPx: () => number;
@@ -89,7 +91,16 @@ function clamp(value: number, min: number, max: number): number {
   return Math.min(max, Math.max(min, value));
 }
 
-export function createEngine(handlers: EngineHandlers): Engine {
+export function createEngine(): Engine {
+  // Handlers are attached after construction (from an effect), so silence until then.
+  let handlers: EngineHandlers = {
+    onScores: () => {},
+    onPhase: () => {},
+    onBallSpeed: () => {},
+    onHit: () => {},
+    onPoint: () => {},
+    onCountdownTick: () => {},
+  };
   const state: EngineState = {
     phase: "idle",
     winner: null,
