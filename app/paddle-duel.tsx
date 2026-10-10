@@ -141,12 +141,14 @@ export function PaddleDuel() {
     engine.setPaused(paused);
   }, [engine, paused]);
 
-  const primaryAction = () => {
+  const primaryAction = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (soundOnRef.current) void unlockAudio();
     engine.setPaused(false);
     setPaused(false);
     if (phase === "idle") engine.startGame();
     else engine.restart();
+    // Give the keyboard back: a focused button would swallow Space and restart the game.
+    event.currentTarget.blur();
   };
 
   const changeSpeed = (next: SpeedKey) => {
