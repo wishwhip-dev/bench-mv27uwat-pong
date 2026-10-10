@@ -50,31 +50,35 @@ export function PaddleDuel() {
   const [speedKey, setSpeedKey] = useState<SpeedKey>("normal");
   const [soundOn, setSoundOn] = useState(false);
   const [ballSpeed, setBallSpeed] = useState<number | null>(null);
+  const [serving, setServing] = useState<Side>("left");
 
   const soundOnRef = useRef(false);
-  const engineRef = useRef<ReturnType<typeof createEngine> | null>(null);
-  if (engineRef.current === null) {
-    engineRef.current = createEngine({
-      onScores: (left, right) => setScores({ left, right }),
-      onPhase: (next, nextWinner) => {
-        setPhase(next);
-        setWinner(nextWinner);
-        if (next === "over" || next === "idle") setPaused(false);
-      },
-      onBallSpeed: (pxPerSecond) => setBallSpeed(pxPerSecond),
-      onHit: () => {
-        if (soundOnRef.current) playHitSound();
-      },
-      onPoint: () => {
-        if (!soundOnRef.current) return;
-        if (engineRef.current?.state.phase === "over") playWinSound();
-        else playPointSound();
-      },      onCountdownTick: (n) => {
-        if (soundOnRef.current) playCountdownBeep(n);
-      },
-    });
-  }
-  const engine = engineRef.current;
+  // The engine is created once and never re-created; React holds only what is shown as text.
+  const engine = useMemo(
+    () =>
+      createEngine({
+        onScores: (left, right) => setScores({ left, right }),
+        onPhase: (next, nextWinner, nextServing) => {
+          setPhase(next);
+          setWinner(nextWinner);
+          setServing(nextServing);
+          if (next === "over") setPaused(false);
+        },
+        onBallSpeed: (pxPerSecond) => setBallSpeed(pxPerSecond),
+        onHit: () => {
+          if (soundOnRef.current) playHitSound();
+        },
+        onPoint: (gameOver) => {
+          if (!soundOnRef.current) return;
+          if (gameOver) playWinSound();
+          else playPointSound();
+        },
+        onCountdownTick: (n) => {
+          if (soundOnRef.current) playCountdownBeep(n);
+        },
+      }),
+    [],
+  );
 
   // Saved settings are read after mount, never during render, so hydration matches. The mirrors
   // into React go through a microtask: state setters do not run inside the effect body itself.
@@ -210,7 +214,7 @@ export function PaddleDuel() {
     phase === "idle"
       ? "Warm-up. Press Start game to serve — first to 7 points wins."
       : phase === "countdown"
-        ? `${sideName(engine.state.serving)} receives the serve…`
+        ? `${sideName(serving)} receives the serve…`
         : phase === "over" && winner
           ? `${sideName(winner)} wins ${scores.left}–${scores.right}.`
           : paused
