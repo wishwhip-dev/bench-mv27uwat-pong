@@ -57,7 +57,7 @@ The app's name, description and colour live in `app/identity.ts`; change them th
 
 **That list is the entire project.** There is nothing else to discover, so do not spend steps
 exploring for it. If you want to see the conventions before writing, the ones worth opening are
-`app/starter-scene.tsx`, `components/canvas-stage.tsx` and `app/globals.css`.
+`app/paddle-duel.tsx`, `components/canvas-stage.tsx` and `app/globals.css`.
 
 ## What this project ships
 
