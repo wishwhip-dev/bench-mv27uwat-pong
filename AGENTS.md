@@ -1,8 +1,8 @@
 # Working in this project
 
 A reviewed Next.js App Router starter for something drawn: a visual, a toy, a simulation or a
-game. It builds and runs as-is; `app/page.tsx` and `app/starter-scene.tsx` are a placeholder meant
-to be replaced by the product you are asked for.
+game. It builds and runs as-is; the placeholder page and scene have been replaced by the product,
+a two-player paddle game.
 
 Read this instead of exploring. It is the whole setup.
 
@@ -25,8 +25,11 @@ Next.js App Router · TypeScript · Tailwind CSS · shadcn/ui · 14 shadcn/ui co
 ```
 app/identity.ts              the app's name, description and colour; the title, icons, manifest and share image read it. Change them here.
 app/layout.tsx               root layout — <html>/<body>, <Providers>, and metadata read from identity.ts.
-app/page.tsx                 the placeholder page, a server component. Replace it.
-app/starter-scene.tsx        the placeholder drawing (client). Replace or delete it.
+app/page.tsx                 the game page, a server component that renders the client island.
+app/paddle-duel.tsx          "use client" — the game: canvas court, DOM score, status and controls.
+lib/paddle-duel-engine.ts    the game engine: state and physics, no canvas and no React.
+lib/paddle-duel-draw.ts      the renderer: draws the court from engine state onto a 2D context.
+lib/sound.ts                 the game's sounds, through the shared AudioContext in lib/audio.ts.
 app/globals.css              Tailwind entry and the dark design tokens.
 app/providers.tsx            "use client" — composed from this project's modules. Already wired into layout.
 types/webgpu.d.ts            WebGPU types, for type-checking only. Nothing here may require WebGPU.
